@@ -31,6 +31,7 @@ router.post(
     check("title", "El titulo es obligatorio").not().isEmpty(),
     check("start", "Fecha de inicio es obligatoria").custom(isDate),
     check("end", "Fecha final es obligatoria").custom(isDate),
+    check("bgColor", "El color del evento es obligatorio").not().isEmpty(),
     validarCampos,
   ],
   // controller
