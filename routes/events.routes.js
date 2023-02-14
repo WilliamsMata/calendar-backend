@@ -24,22 +24,29 @@ router.get("/", obtenerEventos);
 
 // Crear un nuevo evento
 router.post(
-  // route
   "/",
   [
-    // middlewares
     check("title", "El titulo es obligatorio").not().isEmpty(),
     check("start", "Fecha de inicio es obligatoria").custom(isDate),
     check("end", "Fecha final es obligatoria").custom(isDate),
     check("bgColor", "El color del evento es obligatorio").not().isEmpty(),
     validarCampos,
   ],
-  // controller
   crearEvento
 );
 
 // Actualizar evento
-router.put("/:id", actualizarEvento);
+router.put(
+  "/:id",
+  [
+    check("title", "El titulo es obligatorio").not().isEmpty(),
+    check("start", "Fecha de inicio es obligatoria").custom(isDate),
+    check("end", "Fecha final es obligatoria").custom(isDate),
+    check("bgColor", "El color del evento es obligatorio").not().isEmpty(),
+    validarCampos,
+  ],
+  actualizarEvento
+);
 
 // Eliminar evento
 router.delete("/:id", eliminarEvento);
