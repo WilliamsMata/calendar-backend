@@ -22,7 +22,7 @@ router.post(
     // Middleware
     check("name", "Name is required").not().isEmpty(),
     check("email", "Email is invalid").isEmail(),
-    check("password", "Password must be at least 6 characters").isLength({
+    check("password", "Password must contain at least 6 characters").isLength({
       min: 6,
     }),
     validarCampos,
@@ -37,7 +37,7 @@ router.post(
   [
     // Middleware
     check("email", "Email is invalid").isEmail(),
-    check("password", "Password must be at least 6 characters").isLength({
+    check("password", "Password must contain at least 6 characters").isLength({
       min: 6,
     }),
     validarCampos,
