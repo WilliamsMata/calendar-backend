@@ -26,10 +26,10 @@ router.get("/", obtenerEventos);
 router.post(
   "/",
   [
-    check("title", "El titulo es obligatorio").not().isEmpty(),
-    check("start", "Fecha de inicio es obligatoria").custom(isDate),
-    check("end", "Fecha final es obligatoria").custom(isDate),
-    check("bgColor", "El color del evento es obligatorio").not().isEmpty(),
+    check("title", "Title is required").not().isEmpty(),
+    check("start", "Start date is required").custom(isDate),
+    check("end", "End date is required").custom(isDate),
+    check("bgColor", "Event color is required").not().isEmpty(),
     validarCampos,
   ],
   crearEvento
@@ -39,10 +39,10 @@ router.post(
 router.put(
   "/:id",
   [
-    check("title", "El titulo es obligatorio").not().isEmpty(),
-    check("start", "Fecha de inicio es obligatoria").custom(isDate),
-    check("end", "Fecha final es obligatoria").custom(isDate),
-    check("bgColor", "El color del evento es obligatorio").not().isEmpty(),
+    check("title", "Title is required").not().isEmpty(),
+    check("start", "Start date is required").custom(isDate),
+    check("end", "End date is required").custom(isDate),
+    check("bgColor", "Event color is required").not().isEmpty(),
     validarCampos,
   ],
   actualizarEvento

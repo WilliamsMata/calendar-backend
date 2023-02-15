@@ -26,7 +26,7 @@ const crearEvento = async (req = request, res = response) => {
     console.log(error);
     res.status(500).json({
       ok: false,
-      msg: "Hable con el administrador",
+      msg: "Please talk to the administrator",
     });
   }
 };
@@ -41,14 +41,14 @@ const actualizarEvento = async (req = request, res = response) => {
     if (!evento) {
       return res.status(404).json({
         ok: false,
-        msg: "Evento no existe por ese id",
+        msg: "Event does not exist for that id",
       });
     }
 
     if (evento.user.toString() !== uid) {
       return res.status(401).json({
         ok: false,
-        msg: "No tiene privilegio para editar este evento",
+        msg: "You do not have privilege to edit this event",
       });
     }
 
@@ -71,7 +71,7 @@ const actualizarEvento = async (req = request, res = response) => {
     console.log(error);
     res.status(500).json({
       ok: false,
-      msg: "Hable con el administrador",
+      msg: "Please talk to the administrator",
     });
   }
 };
@@ -86,14 +86,14 @@ const eliminarEvento = async (req = request, res = response) => {
     if (!evento) {
       return res.status(404).json({
         ok: false,
-        msg: "Evento no existe por ese id",
+        msg: "Event does not exist for that id",
       });
     }
 
     if (evento.user.toString() !== uid) {
       return res.status(401).json({
         ok: false,
-        msg: "No tiene privilegio para eliminar este evento",
+        msg: "You do not have privilege to delete this event",
       });
     }
 
@@ -101,13 +101,13 @@ const eliminarEvento = async (req = request, res = response) => {
 
     res.status(200).json({
       ok: true,
-      msg: "Evento eliminado",
+      msg: "Event deleted",
     });
   } catch (error) {
     console.log(error);
     res.status(500).json({
       ok: false,
-      msg: "Hable con el administrador",
+      msg: "Please talk to the administrator",
     });
   }
 };
