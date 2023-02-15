@@ -20,11 +20,11 @@ router.post(
   "/new",
   [
     // Middleware
-    check("name", "Name is required").not().isEmpty(),
-    check("email", "Email is required or it is invalid").isEmail(),
+    check("name", "El nombre es requerido").not().isEmpty(),
+    check("email", "El email es invalido").isEmail(),
     check(
       "password",
-      "Password must contain more than six characters"
+      "La contraseña debe tener por lo menos 6 caracteres"
     ).isLength({ min: 6 }),
     validarCampos,
   ],
@@ -37,10 +37,10 @@ router.post(
   "/",
   [
     // Middleware
-    check("email", "Email is required or it is invalid").isEmail(),
+    check("email", "El email es invalido").isEmail(),
     check(
       "password",
-      "Password must contain more than six characters"
+      "La contraseña debe tener por lo menos 6 caracteres"
     ).isLength({ min: 6 }),
     validarCampos,
   ],
