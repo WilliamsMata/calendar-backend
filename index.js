@@ -27,8 +27,6 @@ app.get("/*", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-// TODO: crud// Eventos
-
 // Escuchar peticiones
 app.listen(port, () => {
   console.log(`Servidor corriendo en puerto ${port}`);
