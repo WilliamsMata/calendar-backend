@@ -24,7 +24,7 @@ app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/events", require("./routes/events.routes"));
 
 app.get("/*", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
+  res.redirect("/");
 });
 
 // Escuchar peticiones
