@@ -32,7 +32,7 @@ npm install
 npm run dev
 ```
 
-1. Open your browser and visit http://localhost:3000. You should see a "API is running" message.
+1. Open your browser and visit http://localhost:3000. You should see my react calendar app => https://github.com/WilliamsMata/calendar-app.
 
 ## **Usage**
 
