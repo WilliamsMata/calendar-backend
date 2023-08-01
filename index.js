@@ -7,9 +7,6 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT;
 
-// Base de datos
-dbConnection();
-
 // CORS
 app.use(cors());
 
@@ -27,7 +24,10 @@ app.get("/*", (req, res) => {
   res.redirect("/");
 });
 
-// Escuchar peticiones
-app.listen(port, () => {
-  console.log(`Servidor corriendo en puerto ${port}`);
+// Base de datos
+dbConnection().then(() => {
+  // Escuchar peticiones
+  app.listen(port, () => {
+    console.log(`Servidor corriendo en puerto ${port}`);
+  });
 });
