@@ -1,20 +1,32 @@
-# Usamos una imagen de Node.js más ligera basada en Alpine Linux
-FROM node:lts-alpine
 
-# Establecemos el directorio de trabajo dentro del contenedor
-WORKDIR /app
+# ? Stage 1: install dependencies
+FROM node:lts-alpine AS deps
 
-# Copiamos solo el archivo package.json para aprovechar la caché de Docker
-COPY package.json ./
+WORKDIR /usr/src/app
 
-# Instalamos las dependencias del proyecto
-RUN npm install --production
+COPY package*.json ./
 
-# Copiamos el resto de los archivos del proyecto
+# Install dependencies
+RUN npm ci --only=production && npm cache clean --force
+
+# ? Stage 2: Run the app
+FROM node:lts-alpine AS runner
+
+WORKDIR /usr/src/app
+
+# Copy node_modules from deps stage
+COPY --from=deps /usr/src/app/node_modules ./node_modules
+
+# Copy the source code
 COPY . .
 
-# Exponemos el puerto en el que el servidor Express estará escuchando
-EXPOSE 3000
+ENV NODE_ENV=production
 
-# Comando para ejecutar la aplicación
+# Set the user because running as root is a security risk
+USER node
+
+# Expose the port
+EXPOSE 3000 
+
+# Run the app
 CMD ["node", "index.js"]
